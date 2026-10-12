@@ -13,3 +13,7 @@ target_compile_features(huynity_objectlib PUBLIC cxx_std_23)
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(huynity_objectlib PRIVATE -Wall -Wextra -Wpedantic)
 endif()
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
