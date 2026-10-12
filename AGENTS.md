@@ -10,6 +10,7 @@ Huynity — C++23-проект геометрической библиотеки
 Huynity/
 ├── AGENTS.md                         # карта проекта и правила разработки
 ├── .clang-format                     # единый стиль C++
+├── .github/workflows/ci.yml           # GitHub Actions: clang-format и сборка
 ├── CMakeLists.txt                    # проект, C++23, подключение компонентов
 ├── CMakePresets.json                 # Ninja Debug, binaryDir: ${sourceDir}/build
 ├── engine/
@@ -81,6 +82,11 @@ Huynity/
   опциональным и не мешать сборке Math / Object Library.
 
 ## Build & test
+
+GitHub Actions (`.github/workflows/ci.yml`) запускает две независимые джобы
+на push и pull request: проверку всех отслеживаемых `.h`/`.cpp` через
+clang-format 20.1.8 через `pipx run --spec clang-format==20.1.8 clang-format`
+и сборку Ninja с GCC 14 на Ubuntu 24.04. Путь установки pipx не фиксируется.
 
 `./tools/scripts/build.sh` настраивает и собирает проект, затем создаёт в корне
 ссылку `compile_commands.json` на базу команд в каталоге сборки. Скрипт работает
