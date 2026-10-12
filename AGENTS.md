@@ -36,6 +36,7 @@ Huynity/
 ├── apps/editor/                      # план: main и UI
 ├── tests/integration/                # план: проверки взаимодействия компонентов
 ├── examples/objectlib/               # работающий самостоятельный пример
+├── tools/scripts/build.sh            # настройка, сборка и ссылка compile_commands.json
 └── docs/                             # архитектура, API, UML; diagrams/ — SVG и DOT
 ```
 
@@ -80,6 +81,13 @@ Huynity/
   опциональным и не мешать сборке Math / Object Library.
 
 ## Build & test
+
+`./tools/scripts/build.sh` настраивает и собирает проект, затем создаёт в корне
+ссылку `compile_commands.json` на базу команд в каталоге сборки. Скрипт работает
+из любого текущего каталога; по умолчанию использует `build` и для новой сборки
+preset `ninja`. Другой каталог задаётся через `HUYNITY_BUILD_DIR`, например:
+`HUYNITY_BUILD_DIR=/tmp/huynity-build ./tools/scripts/build.sh`.
+Существующая конфигурация сохраняется; экспорт команд компиляции включается явно.
 
 ```sh
 # Для текущего preset; при явно выбранном другом дереве подставь его путь.
